@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de calculadora de notas</title>
+    <style>
+        body {
+            background: linear-gradient(90deg, #cdf009, #5dde12);
+        }
+        .botones {
+            width: 50%;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        #alumno_y_puntos {
+            background-color: white;
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora de notas</h1>
+    </header>
+    <div class="botones">
+        <button style="width: 330px; height: 50px;" id="boton_añadir_alumno">Añadir Alumno y Puntos</button><br><br>
+        <button style="width: 330px; height: 50px;" id="boton_calcular_media">Calcular Media</button>
+    </div>
+    <div id="alumno_y_puntos">
+        <label>Introduce el nombre del alumno:</label><br><br>
+        <input type="text" id="alumno_entrada" placeholder="Nombre del alumno..."><br><br>
+        <label>Introduce los puntos:</label><br><br>
+        <input type="number" id="puntos_entrada" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_2" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_3" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_4" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_5" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_6" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_7" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_8" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_9" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_10" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_11" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_12" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_13" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_14" placeholder="Puntos..."><br><br>
+        <input type="number" id="puntos_entrada_15" placeholder="Puntos..."><br><br>
+        <button style="width: 330px; height: 50px;" id="boton_guardar">Guardar</button>
+        <button id="boton_cerrar_2">Cerrar</button>
+    </div><br><br>
+    <div id="resultado"></div>
+    <script>
+
+        let alumnos = [];
+        let puntuaciones = [];
+
+        document.getElementById('alumno_y_puntos').style.display = 'none';
+
+        document.getElementById('boton_añadir_alumno').addEventListener('click', function() {
+            document.getElementById('alumno_y_puntos').style.display = 'block';
+        });
+
+        document.getElementById('boton_cerrar_2').addEventListener('click', function() {
+            document.getElementById('alumno_y_puntos').style.display = 'none';
+        });
+
+        document.getElementById('boton_guardar').addEventListener('click', function() {
+            alumnos.push(document.getElementById('alumno_entrada').value);
+            puntuaciones.push(document.getElementById('puntos_entrada').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_2').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_3').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_4').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_5').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_6').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_7').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_8').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_9').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_10').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_11').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_12').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_13').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_14').value);
+            puntuaciones.push(document.getElementById('puntos_entrada_15').value);
+            alert('Puntuaciones guardadas exitosamente.');
+        });
+
+        document.getElementById('boton_calcular_media').addEventListener('click', function() {
+            let sumaAlumnos = 0;
+            let totalAlumnos = 0;
+            
+            // Sumar solo los puntos de los alumnos si son mayores a 0
+            for (let i = 0; i < puntuaciones.length; i++) {
+                if (puntuaciones[i] > 0) {
+                    sumaAlumnos += parseFloat(puntuaciones[i]);  // Asegúrate de convertir los valores a números
+                    totalAlumnos++;
+                }
+            }
+            
+            // Calcular la media de los alumnos
+            let mediaAlumnos = totalAlumnos > 0 ? sumaAlumnos / totalAlumnos : 0;
+        
+            // Mostrar la media
+            document.getElementById('resultado').innerHTML = `La media del alumno ${document.getElementById('alumno_entrada').value} es: ${mediaAlumnos.toFixed(2)}`;
+        });
+        
+    </script>
+</body>
+</html>
